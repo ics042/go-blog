@@ -1,0 +1,12 @@
+# phpstorm project files
+.vscode
+
+# Mac DS_Store Files
+.DS_Store
+
+# go-blog
+go-blog
+go-blog.tar.gz
+
+# image files
+static/attachment

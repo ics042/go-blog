@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-primary">
+            <div class="box-header">
+                <h3 class="box-title">{{.SubTitle}}</h3>
+                <div class="box-tools pull-right">
+                    <a class="btn btn-success btn-xs" href="/category?action=create">Add Category</a>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Display Order</th>
+                            <th>Create Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{range .Categories}}
+                            <tr>
+                                <td><a href="/category?action=edit&id={{.ID}}">{{.Name}}</a></td>
+                                <td>{{.DisplayOrder}}</td>
+                                <td>{{date .CreatedAt "Y-m-d H:i:s" }}</td>
+                                <td><a href="/category?action=del&id={{.ID}}"><i class="fa fa-trash"></i></a></td>
+                            </tr>
+                        {{end}}
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </div>
+    <!-- /.col -->
+</div>
