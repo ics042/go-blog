@@ -4,8 +4,6 @@ import (
 	"fmt"
 	"time"
 
-	"strconv"
-
 	"github.com/astaxie/beego/orm"
 )
 
@@ -91,16 +89,17 @@ func GetDashBoardBlogs() ([]string, map[string][]*Blog) {
 	qs := o.QueryTable("blog")
 	blogMaps := make(map[string][]*Blog)
 
-	now := time.Now()
-	year := now.Year()
-	yearStr := strconv.Itoa(year)
-	month := int(now.Month())
-	monthStr := strconv.Itoa(month)
-	firstDateOfMonth := yearStr + "-" + monthStr + "-01"
+	// now := time.Now()
+	// year := now.Year()
+	// yearStr := strconv.Itoa(year)
+	// month := int(now.Month())
+	// monthStr := strconv.Itoa(month)
+	// firstDateOfMonth := yearStr + "-" + monthStr + "-01"
 
 	var blogs []*Blog
 	var blogKeys []string
-	qs.Filter("StatusId", 1).Filter("CreatedAt__gte", firstDateOfMonth).OrderBy("-CreatedAt").All(&blogs)
+	// qs.Filter("StatusId", 1).Filter("CreatedAt__gte", firstDateOfMonth).OrderBy("-CreatedAt").All(&blogs)
+	qs.Filter("StatusId", 1).OrderBy("-CreatedAt").All(&blogs)
 
 	if len(blogs) > 0 {
 		currentKey := generateKey(blogs[0].CreatedAt)
